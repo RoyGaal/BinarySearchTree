@@ -1,0 +1,54 @@
+public class BSTNode 
+{
+	int x;
+	BSTNode left;
+	BSTNode right;
+	
+	public BSTNode(int x)
+	{
+		this.x = x;
+	}
+	public int min()
+	{
+		if(left != null) return left.min();
+		else return x;
+	}
+	public int max()
+	{
+		if(right != null) return right.max();
+		return x;
+	}
+	public int max(int a, int b)
+	{
+		if(a > b) return a;
+		else      return b;
+	}
+	public void minToMax()
+	{
+		if(left != null) left.minToMax();
+		System.out.println(x);
+		if(right != null) right.minToMax();
+	}
+	public int numNodes()
+	{
+		int numNodes = 1;
+		if(left != null) numNodes += left.numNodes();
+		if(right != null) numNodes += right.numNodes();
+		return numNodes;
+	}
+	public int levels()
+	{
+		int count = 1;
+		int Lleft = 0;
+		int Lright = 0;
+		
+		if(left != null) Lleft = left.levels();
+		if(right != null) Lright = right.levels();
+		
+		if(Lleft > Lright) count = 1 + Lleft;
+		else               count = 1 + Lright;
+		
+		return count;
+	}
+	
+}
